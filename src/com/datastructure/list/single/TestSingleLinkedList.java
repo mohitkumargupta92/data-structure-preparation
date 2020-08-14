@@ -28,7 +28,5 @@ public class TestSingleLinkedList {
 		}
 
 		SingleLinkedList.merge(list1, list2).print();
-
 	}
-
 }
