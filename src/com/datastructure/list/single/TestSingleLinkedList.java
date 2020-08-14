@@ -18,7 +18,7 @@ public class TestSingleLinkedList {
 		SingleLinkedList list1 = new SingleLinkedList();
 		SingleLinkedList list2 = new SingleLinkedList();
 
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 100; i++) {
 			if (i % 2 != 0) {
 				list1.insert(i);
 				continue;
