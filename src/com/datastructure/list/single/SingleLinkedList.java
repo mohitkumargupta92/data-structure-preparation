@@ -23,6 +23,21 @@ public class SingleLinkedList {
 		}
 
 		temp.setNext(newNode);
+	}
+
+	public void insertNode(Node node) {
+		if (null == head) {
+			head = node;
+			return;
+		}
+
+		Node temp = head;
+
+		while (temp.getNext() != null) {
+			temp = temp.getNext();
+		}
+
+		temp.setNext(node);
 
 	}
 
@@ -91,6 +106,57 @@ public class SingleLinkedList {
 			currentNode = nextNode;
 		}
 		head = previousNode;
+
+	}
+
+	/*
+	 * Merge Operation for Sorted List
+	 */
+	public static SingleLinkedList merge(SingleLinkedList list1, SingleLinkedList list2) {
+		if (list1.isEmpty() && list2.isEmpty()) {
+			return null;
+		}
+
+		if (list1.isEmpty()) {
+			return list2;
+		}
+
+		if (list2.isEmpty()) {
+			return list1;
+		}
+
+		SingleLinkedList mergedSingleLinkedList = new SingleLinkedList();
+
+		Node temp1 = list1.getHead();
+		Node temp2 = list2.getHead();
+
+		while (temp1 != null && temp2 != null) {
+			if (temp1.getData() < temp2.getData()) {
+				mergedSingleLinkedList.insert(temp1.getData());
+				temp1 = temp1.getNext();
+				continue;
+			} else if (temp1.getData() > temp2.getData()) {
+				mergedSingleLinkedList.insert(temp2.getData());
+				temp2 = temp2.getNext();
+				continue;
+			} else if (temp1.getData() == temp2.getData()) {
+				mergedSingleLinkedList.insert(temp1.getData());
+				temp1 = temp1.getNext();
+
+				mergedSingleLinkedList.insert(temp2.getData());
+				temp2 = temp2.getNext();
+				continue;
+			}
+
+		}
+
+		if (null != temp1) {
+			mergedSingleLinkedList.insertNode(temp1);
+		} else if (null != temp2) {
+			mergedSingleLinkedList.insertNode(temp2);
+		}
+
+		return mergedSingleLinkedList;
 
 	}
 
